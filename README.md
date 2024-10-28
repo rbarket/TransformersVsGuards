@@ -18,10 +18,10 @@ The code can be implemented after installing the dependencies. The dependecies c
   The testing can be implemented using Github_testing.py, which utilizes the trained model saved in the respective directory or the pretrained model which will utilize the testing dataset provided at [zenodo](https://zenodo.org/records/13992762) 
 
 ## Explainability
-  The file Github_calculateattributions.py can be run to calculate the attribution scores. The explainability part of the paper has been divided into two different parts. 
+  The file Github_calculateattributions.py can be run to calculate the attribution scores. The file utilizes the testing dataset and implements Layer Integrated Gradients to calculate the attribution scores corresponding to each input token. The explainability part of the paper has been divided into two different parts. 
 
 #### 1. Calculating Collective attribution scores:
-  The first part of the file Github_calculateattributions.py can calculates the averaged attribution scores corresponding to each input token as shown in figure 4 of the [paper](link to paper).The file utilizes the testing dataset and implements LAyer Integrated Gradients to calculate the attribution scores corresponding to each input token. 
+  The first part of the file Github_calculateattributions.py calculates the averaged attribution scores corresponding to each input token as shown in figure 4 of the [paper](link to paper).
 
 #### 2. Calculating attribution score for individual example:
   The second part of the file Github_calculateattributions.py is responsible for calculating the attribution scores corresponding to just one individual example as shown in figure 3 of the [paper](link to paper).
