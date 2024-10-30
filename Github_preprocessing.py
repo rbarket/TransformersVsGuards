@@ -108,6 +108,10 @@ with open('Dataset/train/RISCH_train.json') as f:
     risch_train = json.load(f)
 with open('Dataset/test/RISCH_test.json') as f:
     risch_test = json.load(f)
+with open('Dataset/train/LIOUVILLE_train.json') as f:
+     LIOUVILLE_train = json.load(f)
+with open('Dataset/test/LIOUVILLE_test.json') as f:
+    LIOUVILLE_test = json.load(f)
 
 bwd_train = [sublist[:3] + sublist[4:] for sublist in bwd_train]
 fwd_train = [sublist[:3] + sublist[4:] for sublist in fwd_train]
@@ -117,8 +121,8 @@ bwd_test = [sublist[:3] + sublist[4:] for sublist in bwd_test]
 fwd_test = [sublist[:3] + sublist[4:] for sublist in fwd_test]
 ibp_test = [sublist[:3] + sublist[4:] for sublist in ibp_test]
 
-train_data = bwd_train + fwd_train + ibp_train + sub_train +  risch_train
-test_data = bwd_test + fwd_test + ibp_test +  sub_test + risch_test
+train_data = bwd_train + fwd_train + ibp_train + sub_train +  risch_train + LIOUVILLE_train
+test_data = bwd_test + fwd_test + ibp_test +  sub_test + risch_test + LIOUVILLE_test
 
 df = pd.DataFrame(train_data, columns=['integrand', 'prefix', 'integral', 'label'])
 df['prefix'] = df['prefix'].apply(replace_int_with_C)
