@@ -71,7 +71,7 @@ def test_model(algo, test_data):
     model_test = th.nn.DataParallel(model_test)
 
         # Load model from memory
-    model_path = '/home/shafiqu9/NeurIPS2024_Workshop_Paper/Models/' + algo + '.pth'
+    model_path = '/path to your models folder /Models/' + algo + '.pth'
     model_test.load_state_dict(th.load(model_path))
         
         
@@ -112,7 +112,7 @@ def test_model(algo, test_data):
         # Print metrics
     print(f'Sub-Algo: {algo}, Accuracy: {final_accuracy:.4f}, Precision: {final_precision:.4f}, Recall: {final_recall:.4f}')
     return model_test, test_loader
-algo='risch'
+algo='risch' # change the name to the model that needs you want to evaluate.
 model_test, test_loader = test_model(algo, test_data)
 
   
