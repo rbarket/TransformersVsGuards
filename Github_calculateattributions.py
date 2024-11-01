@@ -17,19 +17,12 @@ from collections import Counter
 from torchmetrics.classification import BinaryAccuracy, BinaryPrecision, BinaryRecall
 from captum.attr import LayerIntegratedGradients
 import numpy as np
-import matplotlib.pyplot as plt
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
-from Github_transformerclasses import TransformerBinaryClassifier
-from Github_transformerclasses import IntegralDataset
-from Github_transformerclasses import collate_fn
-from Github_preprocessing import replace_int_with_C
-from Github_preprocessing import DataLoader
-from Github_testing import model_test
-from Github_transformerclasses import device
-from Github_preprocessing import tokenizer
-from Github_testing import test_loader 
+from Transformerclasses import TransformerBinaryClassifier, IntegralDataset, collate_fn
+from Preprocessing import replace_int_with_C, DataLoader, tokenizer 
+from Testing import model_test, test_loader
 from IPython.display import display, HTML
 import matplotlib as mpl
 import matplotlib.colors as mcolors
@@ -259,6 +252,8 @@ word_index = {'OOV': 1,
  'acot': 34,
  'coth': 35,
  'Re': 36}
+
+# change names from e.g. acos -> arccos
 index_to_word = invert_word_index(word_index)
 index_to_word[28] = 'arcosh'
 index_to_word[23] = 'arctan'
