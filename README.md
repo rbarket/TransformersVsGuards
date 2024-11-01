@@ -24,3 +24,17 @@ The code can be implemented after installing the dependencies. The dependecies c
 
 #### 2. Calculating attribution score for individual example:
   The second part of the file Github_calculateattributions.py is responsible for calculating the attribution scores corresponding to just one individual example as shown in figure 3 of the [paper](https://openreview.net/forum?id=b2Ni828As7).
+
+## Reference
+[Transformers to Predict the Applicability of Symbolic Integration Routines](https://openreview.net/forum?id=b2Ni828As7)
+```
+@inproceedings{
+barket2024transformers,
+title={Transformers to Predict the Applicability of Symbolic Integration Routines},
+author={Rashid Barket and Uzma Shafiq and Matthew England and Juergen Gerhard},
+booktitle={The 4th Workshop on Mathematical Reasoning and AI at NeurIPS'24},
+year={2024},
+url={https://openreview.net/forum?id=b2Ni828As7}
+}
+```
+
