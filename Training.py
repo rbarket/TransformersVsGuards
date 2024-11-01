@@ -12,7 +12,7 @@ import torch.nn.functional as F
 from torch.utils.data import Dataset, DataLoader, random_split
 import torch.nn as nn
 from torch.cuda.amp import GradScaler, autocast
-from Github_preprocessing import device
+from Preprocessing import device
 from collections import Counter
 from torchmetrics.classification import BinaryAccuracy, BinaryPrecision, BinaryRecall
 
@@ -20,12 +20,9 @@ from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from sklearn.model_selection import train_test_split
 
-from Github_transformerclasses import PositionalEncoding
-from Github_transformerclasses import TransformerBinaryClassifier
-from Github_transformerclasses import train_model
-from Github_transformerclasses import IntegralDataset
-from Github_transformerclasses import collate_fn
-import Github_preprocessing
+from Transformerclasses import PositionalEncoding, TransformerBinaryClassifier, train_model, IntegralDataset, collate_fn   
+import Preprocessing
+
 # Parameters
 df=Github_preprocessing.df
 max_size=Github_preprocessing.max_size
@@ -44,16 +41,17 @@ LR = 0.0001
 EPOCHS = 10
 
 algo_dict = {
-'risch': 3,
-'trager': 5,
 'default': 0,
-'derivativedivides': 1, 
+'derivativedivides': 1,
 'parts': 2,
+'risch': 3,
 'norman': 4,
+'trager': 5,
 'parallelrisch': 6,
 'meijerg': 7,
 'elliptic': 8, 
-'pseudoelliptic':9, 
+'pseudoelliptic':9,
+# lookup is 10 but no need to train an ML model for lookup table
 'gosper': 11,
 'orering':12
 }
@@ -79,7 +77,7 @@ for algo in algo_dict.keys():
     
     train_loader = DataLoader(train_dataset, 
                               batch_size=BATCH_SIZE,
-                            #   shuffle=True,
+                              shuffle=True,
                               collate_fn=collate_fn,
                               num_workers=2,  # Parallel data loading
                               pin_memory=True,  # Faster data transfer to GPU
@@ -88,8 +86,7 @@ for algo in algo_dict.keys():
                               ) 
     
     val_loader = DataLoader(val_dataset, 
-                            batch_size=BATCH_SIZE,
-                            # shuffle=True, 
+                            batch_size=BATCH_SIZE, 
                             collate_fn=collate_fn,
                             num_workers=2,  # Parallel data loading
                             pin_memory=True,  # Faster data transfer to GPU
@@ -100,5 +97,5 @@ for algo in algo_dict.keys():
     class_model = train_model(model, algo, train_loader, val_loader, criterion, optimizer, scheduler, num_epochs=EPOCHS, device=device)
     
     # Save model
-    # th.save(class_model.state_dict(), '/home/path_to_folder/' + algo + '_maple2024.pth')
+    # th.save(class_model.state_dict(), '/home/path_to_folder/' + algo + '.pth')
 print('done')
