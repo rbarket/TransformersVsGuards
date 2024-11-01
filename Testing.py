@@ -21,12 +21,8 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 from sklearn.metrics import confusion_matrix
 import Github_preprocessing
-from Github_transformerclasses import TransformerBinaryClassifier
-from Github_transformerclasses import IntegralDataset
-from Github_transformerclasses import collate_fn
-from Github_preprocessing import replace_int_with_C
-from Github_preprocessing import DataLoader
-from Github_preprocessing import change_to_binary
+from Transformerclasses import TransformerBinaryClassifier, IntegralDataset, collate_fn
+from Preprocessing import replace_int_with_C, DataLoader, change_to_binary
 
 vocab_size=Github_preprocessing.vocab_size
 tokenizer=Github_preprocessing.tokenizer
@@ -36,8 +32,6 @@ test_data=Github_preprocessing.test_data
 MODEL_DIM = 128
 HEADS = 4
 LAYERS = 2
-
-
 
 def test_model(algo, test_data):
 
@@ -112,6 +106,7 @@ def test_model(algo, test_data):
         # Print metrics
     print(f'Sub-Algo: {algo}, Accuracy: {final_accuracy:.4f}, Precision: {final_precision:.4f}, Recall: {final_recall:.4f}')
     return model_test, test_loader
+
 algo='risch' # change the name to the model that needs you want to evaluate.
 model_test, test_loader = test_model(algo, test_data)
 
